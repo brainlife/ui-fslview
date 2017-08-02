@@ -18,6 +18,6 @@ x11vnc -forever -display :0 -passwd -ncache_cr $X11VNC_PASSWORD &
 sleep 0.2
 
 echo "-----------------------------------lxde-----------------------------"
-DISPLAY=:0 startlxde
+#DISPLAY=:0 startlxde
 
 
