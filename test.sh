@@ -1,11 +1,11 @@
 echo "running vnc server"
-docker stop vncserver
-docker rm vncserver
+docker stop test
+docker rm test
 
 password=$RANDOM.$RANDOM.$RANDOM
 echo "password: $password"
 
-id=$(docker run -dP --name vncserver -e X11VNC_PASSWORD=$password -v `pwd`/test:/input:ro soichih/vncserver-fslview)
+id=$(docker run -dP --name test -e X11VNC_PASSWORD=$password -v `pwd`/test:/input:ro soichih/vncserver-fslview)
 hostport=$(docker port $id | cut -d " " -f 3)
 echo "container $id using $hostport"
 
