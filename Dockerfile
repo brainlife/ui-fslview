@@ -2,7 +2,8 @@
 
 # Start with Ubuntu base image
 #FROM ubuntu:14.04
-FROM neurodebian:nd14.04
+#FROM neurodebian:nd14.04
+FROM neurodebian:nd16.04
 MAINTAINER Soichi Hayashis <hayashis@iu.edu>
 
 # Install LXDE, VNC server, XRDP
@@ -11,7 +12,8 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
 
 EXPOSE 5900
 
-RUN apt-get install -y fslview
+RUN apt-get install -y fslview 
+RUN apt-get install -y wmctrl
 
 # Set XDRP to use TightVNC port
 #RUN sed -i '0,/port=-1/{s/port=-1/port=5901/}' /etc/xrdp/xrdp.ini
