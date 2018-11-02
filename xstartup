@@ -12,4 +12,4 @@ echo $id > /id.txt
 wmctrl -i -r $id -b add,fullscreen
 
 #run it for an hour
-sleep 3600
+#sleep 3600
