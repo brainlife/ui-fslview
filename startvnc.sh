@@ -5,7 +5,5 @@ chmod 600 ~/.vnc/passwd
 
 vncserver -rfbport 5900 -geometry 1200x800
 
-echo "tailing to keep it running..."
-tail -f ~/.vnc/*.log
-
-
+PID=$(cat ~/.vnc/*.pid)
+while [ -e /proc/$PID ]; do sleep 1; done

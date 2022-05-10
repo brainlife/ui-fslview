@@ -1,15 +1,15 @@
 #!/bin/bash
 
-XFCE_PANEL_MIGRATE_DEFAULT=true startxfce4 &
+x-window-manager &
+WM_PID=$!
 
-#fslview can only handle 1 image?
-/usr/bin/fslview `find /input -name *.nii.gz` &
-pid=$!
+/root/.vnc/start &
+PID=$!
+
 sleep 2
-#find the window id
-id=`wmctrl -pl | grep " $pid " | cut -f 1 -d " "`
-echo $id > /id.txt
-wmctrl -i -r $id -b add,fullscreen
+WND_ID=$(wmctrl -pl | awk 'NR==1 {print $1; exit}')
+wmctrl -i -r $WND_ID -b add,fullscreen
 
-#run it for an hour
-#sleep 3600
+wait $PID
+kill -9 $(ps -s $$ -o pid=)
+vncserver -kill $DISPLAY
