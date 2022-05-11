@@ -3,7 +3,7 @@
 XFCE_PANEL_MIGRATE_DEFAULT=true startxfce4 &
 
 #fslview can only handle 1 image?
-/usr/bin/fslview `find /input -name *.nii.gz` &
+/usr/bin/fslview `find $INPUT_DIR -name *.nii.gz` &
 pid=$!
 sleep 2
 #find the window id
